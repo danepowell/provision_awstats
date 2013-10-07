@@ -64,5 +64,12 @@ function provision_awstats_provision_apache_vhost_config($uri, $data) {
   // Write config
   file_put_contents($awstats_conf_dir . '/awstats.' . $uri . '.conf', $awstats_conf);
 
-  return;
+  $output = array(
+  	  'Alias /awstatsclasses "/usr/share/awstats/lib/"',
+	  'Alias /awstatsicons/ "/usr/share/awstats/icon/"',
+	  'Alias /awstatscss "/usr/share/doc/awstats/examples/css"',
+	  'ScriptAlias /awstats/ /usr/lib/cgi-bin/',
+	  'Options ExecCGI -MultiViews +SymLinksIfOwnerMatch',
+	  );
+  return $output;
 }

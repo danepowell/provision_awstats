@@ -1,4 +1,2 @@
 Still requires:
-- Manual setup of an Apache alias to actually access the stats.
 - Manual linking of the awstats conf files in /etc/awstats
-- Manual configuration of cron job.
