@@ -35,11 +35,13 @@ function provision_awstats_provision_apache_vhost_config($uri, $data) {
       '{SiteDomain}',
       '{HostAliases}',
       '{DirData}',
+      '{LogFile}',
     ),
     'replace' => array(
       $uri,
       $aliases,
       $awstats_conf_dir . "/data",
+      '/var/log/apache2/' . $uri . '.access.log',
     ),
   );
 
