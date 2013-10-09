@@ -56,15 +56,8 @@ function provision_awstats_provision_apache_vhost_config($uri, $data) {
       ->status();
   }
 
-  // Create SymLink to config file
-  provision_file()->unlink($server_config_path . '/awstats/awstats.' . $uri . '.conf', TRUE);
-  provision_file()->symlink($awstats_conf_dir . '/awstats.' . $uri . '.conf', $server_config_path . '/awstats/awstats.' . $uri . '.conf', TRUE)
-    ->succeed('Created symlink for @path')
-    ->fail('Could not create symlink for @path')
-    ->status();
-
   // Write config
-  file_put_contents($awstats_conf_dir . '/awstats.' . $uri . '.conf', $awstats_conf);
+  file_put_contents($server_config_path . '/awstats/awstats.' . $uri . '.conf', $awstats_conf);
 
   $output = array(
   	  'Alias /awstatsclasses "/usr/share/awstats/lib/"',
